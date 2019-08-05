@@ -3,31 +3,26 @@ package sxt01;
 import java.util.Scanner;
 
 public class FilmManager {
-	private Film[] films; // ´æ´¢µçÓ°µÄÊı×é
-	private int count; // ¼ÇÂ¼µçÓ°ÊıÁ¿
-
-	{
-		this.films = new Film[100];
-		this.count = 0;
-	}
-
+	private Film[] films=new Film[100]; // å­˜å‚¨ç”µå½±çš„æ•°ç»„
+	private int count=0; // è®°å½•ç”µå½±æ•°é‡
 	public FilmManager() {
-		this.films[0] = new Film("ÎÒ²»ÊÇÒ©Éñ", "ÎÄÄÁÒ°", "Ğìá¿", 120);
-		this.films[1] = new Film("Î÷ºìÊÁÊ×¸»", "ÉòÌÚ", "ÉòÌÚ", 130);
-		this.films[2] = new Film("°®Çé¹«Ô¢", "³ÂºÕ", "³ÂºÕ", 140);
+		
+		this.films[0] = new Film("æˆ‘ä¸æ˜¯è¯ç¥", "æ–‡ç‰§é‡", "å¾å³¥", 120);
+		this.films[1] = new Film("è¥¿çº¢æŸ¿é¦–å¯Œ", "æ²ˆè…¾", "æ²ˆè…¾", 130);
+		this.films[2] = new Film("çˆ±æƒ…å…¬å¯“", "é™ˆèµ«", "é™ˆèµ«", 140);
 
 		this.count = 3;
 	}
 
 	public void start() {
-		System.out.println("»¶Ó­sxt¹ú¼ÊÓ°³Ç");
+		System.out.println("æ¬¢è¿sxtå›½é™…å½±åŸ");
 		System.out.println("------------------------------");
-		System.out.println("1.Ìí¼ÓµçÓ°");
-		System.out.println("2.²é¿´µçÓ°");
-		System.out.println("3.É¾³ıµçÓ°");
-		System.out.println("4.ÍË³ö");
+		System.out.println("1.æ·»åŠ ç”µå½±");
+		System.out.println("2.æŸ¥çœ‹ç”µå½±");
+		System.out.println("3.åˆ é™¤ç”µå½±");
+		System.out.println("4.é€€å‡º");
 		System.out.println("------------------------------");
-		System.out.println("ÇëÑ¡Ôñ:");
+		System.out.println("è¯·é€‰æ‹©:");
 
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
@@ -46,7 +41,7 @@ public class FilmManager {
 				break;
 			}
 			case 4: {
-				System.out.println("³ÌĞòÍË³ö");
+				System.out.println("ç¨‹åºé€€å‡º");
 				break;
 			}
 			default: {
@@ -57,35 +52,35 @@ public class FilmManager {
 	}
 
 	private void add() {
-		System.out.println("-->Ìí¼ÓµçÓ°:");
+		System.out.println("-->æ·»åŠ ç”µå½±:");
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("ÇëÊäÈëµçÓ°Ãû³Æ:");
+		System.out.println("è¯·è¾“å…¥ç”µå½±åç§°:");
 		String name = sc.nextLine();
 		
-		System.out.println("ÇëÊäÈëµ¼Ñİ:");
+		System.out.println("è¯·è¾“å…¥å¯¼æ¼”:");
 		String director = sc.nextLine();
 		
-		System.out.println("ÇëÊäÈëÖ÷Ñİ:");
+		System.out.println("è¯·è¾“å…¥ä¸»æ¼”:");
 		String actors = sc.nextLine();
 		
-		System.out.println("ÇëÊäÈëÊ±³¤:");
+		System.out.println("è¯·è¾“å…¥æ—¶é•¿:");
 		int time = sc.nextInt();
 		
 		Film f = new Film(name, director, actors, time);
 		this.films[this.count++] = f;
-		System.out.println("¡¶"+name+"¡·Ìí¼Ó³É¹¦!");
+		System.out.println("ã€Š"+name+"ã€‹æ·»åŠ æˆåŠŸ!");
 		
 		this.back();
 	}
 
 	private void delete() {
-		// 1.ÊäÈëµçÓ°Ãû³Æ
-		System.out.println("ÇëÊäÈëÒªÉ¾³ıµÄµçÓ°Ãû³Æ:");
+		// 1.è¾“å…¥ç”µå½±åç§°
+		System.out.println("è¯·è¾“å…¥è¦åˆ é™¤çš„ç”µå½±åç§°:");
 		Scanner sc = new Scanner(System.in);
 		String name = sc .nextLine();
 		
-		// 2.²éÕÒµçÓ°
+		// 2.æŸ¥æ‰¾ç”µå½±
 		int loc = -1;
 		for(int i=0;i<this.count;i++) {
 			if(name.equals(this.films[i].getName())) {
@@ -95,17 +90,17 @@ public class FilmManager {
 		}
 		
 		if(loc < 0) {
-			System.out.println("¶Ô²»Æğ£¬Ã»ÓĞÒªÉ¾³ıµÄµçÓ°!");
+			System.out.println("å¯¹ä¸èµ·ï¼Œæ²¡æœ‰è¦åˆ é™¤çš„ç”µå½±!");
 		}else {
-			// 3.É¾³ıµçÓ°
+			// 3.åˆ é™¤ç”µå½±
 			for(int j=loc+1;j<this.count;j++) {
 				this.films[j-1] = this.films[j];
 			}
 			
 			this.count--;
-			// 4.°Ñ×îºóÒ»¸öÔªËØÖÃ¿Õ
+			// 4.æŠŠæœ€åä¸€ä¸ªå…ƒç´ ç½®ç©º
 			this.films[this.count] = null;
-			System.out.println("¡¶"+name+"¡·É¾³ı³É¹¦!");
+			System.out.println("ã€Š"+name+"ã€‹åˆ é™¤æˆåŠŸ!");
 		}
 		
 		this.back();
@@ -113,8 +108,8 @@ public class FilmManager {
 	}
 
 	private void check() {
-		System.out.println("-->²é¿´×ÊÑ¶:");
-		System.out.println("ĞòºÅ\tµçÓ°Ãû³Æ\t\tµ¼Ñİ\tÖ÷Ñİ\tÊ±³¤");
+		System.out.println("-->æŸ¥çœ‹èµ„è®¯:");
+		System.out.println("åºå·\tç”µå½±åç§°\t\tå¯¼æ¼”\tä¸»æ¼”\tæ—¶é•¿");
 		for (int i = 0; i < this.count; i++) {
 			this.films[i].showInfo(i + 1);
 		}
@@ -125,12 +120,12 @@ public class FilmManager {
 	private void back() {
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.println("°´0·µ»Ø:");
+			System.out.println("æŒ‰0è¿”å›:");
 			int n = sc.nextInt();
 			if (n == 0) {
 				break;
 			} else {
-				System.out.println("ÊäÈë´íÎó¡£");
+				System.out.println("è¾“å…¥é”™è¯¯ã€‚");
 			}
 		} while (true);
 
